@@ -1,0 +1,57 @@
+.navbar{
+    background: white;
+    width:100%;
+    ul{
+        margin-left: 48%;
+        li{
+            list-style-type: none;
+            float: left;
+            margin: 0 2%;
+            a{
+                text-decoration: none;
+                color:gray;
+              
+            }
+        }
+        .clearFix{clear: both}
+    }
+}
+.pos{
+    position:fixed;
+    top:0;
+    left:0;
+}
+mat-icon{display: none;color:gray;    
+    margin: 0 49%;
+    font-size: 30px;cursor: pointer;}
+button{
+    background-color: rgb(97, 97, 243);
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 2px;
+    padding: 3px;
+    width: 68px;
+}
+
+@media (max-width: 767px ){/* mobile & tablet*/
+    ul{display: none}
+    mat-icon{display: block}
+   
+}
+@media (min-width: 768px) and (max-width:991px){ /* small screen */
+      
+      
+      
+}
+@media (min-width: 992px) and (max-width:1199px) { /* medium screen */
+      
+      
+}
+
+
+
+
+
+
+

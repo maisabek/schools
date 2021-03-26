@@ -1,0 +1,181 @@
+<div class="home-slider">
+    <div class="scroll-down">
+      <a href="#addItem"></a>
+      <div class="mousey">
+        <div class="scroller"></div>
+      </div>
+    </div>
+  
+      <div class="slider">
+        <ngx-typed-js [strings]="['School is the place where we learn to read and write..', 'It is the most crucial place for a student..', ' it helps us to learn new things..']" 
+        [shuffle]="true" [loop]="true" [typeSpeed]="100">
+           <span class="typing"></span>
+        </ngx-typed-js>
+    </div>
+  <owl-carousel-o [options]="customOptions" class="h-100">
+    
+    <ng-template carouselSlide class="h-100">
+     
+        <div class="carousel-img1" class="h-100">
+          <img src="assets/images/01.png" class="h-100">
+        </div>
+           
+    </ng-template>  
+    <ng-template carouselSlide class="h-100">  
+     
+        <div class="carousel-img2" class="h-100">
+            <img src="assets/images/05.jpg" class="h-100">
+          </div>
+       
+        </ng-template>  
+    <ng-template carouselSlide>
+        
+        <div class="carousel-img3">
+            <img src="assets/images/06.jpg">
+          </div>        
+         
+    </ng-template>  
+  </owl-carousel-o>
+  
+</div>
+
+<!-- end carousel -->
+<!-- start addItem -->
+<div class="addItem mt-5" id="addItem">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h5>Fill Your Data</h5>
+    </div>
+    <div class="card col-md-8">
+      <form [formGroup]="addItemForm" class="m-5">
+        <mat-form-field appearance="full">
+          <mat-label>Student Name</mat-label>
+          <input type="text" matInput formControlName="title">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="full">
+          <mat-label>Class Room Number</mat-label>
+          <input type="number" matInput formControlName="description">
+        </mat-form-field>
+        <br>
+        <!-- <mat-form-field> -->
+          <div class="cover-image-file" class="mt-3">
+         <label class="custom-file-upload">
+          <input type="file" formControlName="image" (change)="onselectFile($event)"/>
+           Upload Main Image
+      </label>
+       
+        </div>
+        <br>
+        <div *ngIf="getImages().controls.length" formArrayName="images">
+          <ng-container *ngFor="let item of getImages().controls;let i=index">
+            <div [formGroupName]="i">
+              <div class="row">
+                <div class="col-md-8">
+         
+                
+                <mat-form-field appearance="full">
+                  <mat-label>subject Name</mat-label>
+                  <input type="text" matInput formControlName="subjectName">
+                </mat-form-field>
+                <br>
+                <mat-form-field appearance="full">
+                 
+                  <mat-label>Comment</mat-label>
+                  <textarea matInput formControlName="subjectCount"></textarea>
+                </mat-form-field>     
+             
+                <!-- </label> -->
+          </div>
+          <div class="col-md-4">
+            <button class="btn mb-4" type="button" (click)="deleteImage(i)">Delete</button>
+          </div>
+          </div>
+        </div>
+      </ng-container>
+        </div>
+        <div class="row">
+          <div class="col-md-8 mt-4">
+            <button class="btn" type="button" (click)="addImages()">Add Subject</button>
+          </div>
+          <div class="col-md-4 mt-4">
+            <button type="button" class="addbtn btn" (click)="openDialog(addTemplate)">send</button>
+          </div>
+        </div>
+      
+        <ng-template #addTemplate>
+        <mat-dialog-content>
+          <h5>Are You Sure You Want To sand your data</h5>
+          <button class="btn m-3" (click)="addItems();pushTitle();pushDescription();pushPage();openSnackBar('data added successfully','ok');closeDialog();addItemForm.reset();total= total+1;pushSubject()">Yes</button>
+          <button class="btn" (click)="closeDialog()">No</button>
+         
+        </mat-dialog-content>
+      </ng-template>
+    </form>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr>
+<!-- end addItem -->
+<!-- start display Items -->
+
+<div class="container">
+  
+
+  <div class="col-md-12" *ngIf="ServiceService.items.length == 0">
+    <h5>No Items Added yet ....</h5>
+  </div>
+          <div class="col-md-12" *ngIf="ServiceService.items.length != 0 && loading">
+            <h5>{{ServiceService.titles[currentPage]}} Data </h5>
+            <div class="card p-5 mt-5">
+              <div class="row">
+                <div class="col-md-4">
+                 <img [src]="url[currentPage]" class="main-image">
+                </div>
+              </div>
+              <p>Student Name  : {{ServiceService.titles[currentPage]}}</p>
+              <p>Class Room Number : {{ServiceService.descriptions[currentPage]}}</p>
+              <ng-container *ngIf="images.length != 0">
+               <p>Subject Info :</p> 
+            <ng-container > 
+              <div class="row">
+                <div class="col-md-12" >
+                 <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">subject Name</th>
+                      <th scope="col">Comment</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- <ng-container *ngFor="let img of images;let i=index"> -->
+                   <!-- subject:  {{ServiceService.subjects[currentPage]}} -->
+                    <tr *ngFor="let img of images;let i=index">
+                      <th scope="row">{{i+1}}</th>
+                      <td>{{img.subjectName}}</td>
+                      <td>{{img.subjectCount}}</td>
+                      <td> <button class="btn mb-4" type="button"
+                         (click)="deleteImage(i+1)">Delete</button>                        
+                      </td>
+                      </tr>
+                    <!-- </ng-container> -->
+                      </tbody>
+                      </table>
+                </div>
+              </div> 
+          </ng-container>
+        </ng-container>
+            </div>
+            <!-- <div class="container ml-5"> -->
+            <div class="navPagination m-auto mt-4 rounded">
+              <ul class="pagination list-unstyled d-flex justify-content-around mt-4">
+                  <li *ngFor="let page of pages" (click)='changePage(page)'>{{page + 1}}</li>
+              </ul>
+          </div></div>
+  <!-- </div> -->
+</div>

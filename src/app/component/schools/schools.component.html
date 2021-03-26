@@ -1,0 +1,167 @@
+<div class="header mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 mt-5">
+                <div class="header-content">
+                    <input type="Search" placeholder="What do you want to learn (type)"  [(ngModel)]="type" (keyup)="updateSchoolByType()" >
+                    <select name="city" [(ngModel)]="city" (change)="updateFilter()">
+                        <option value="">Choose City</option>
+                        <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+                    </select>
+                    <button class="header-btn" (click)="updateFilter()">search</button>
+                </div>
+            </div>
+            <div class="col-md-12 mt-5">
+                <div class="row">
+
+                    <div class="col-12 col-lg-3">
+                        <div class="content p-4" style="margin-left: 38%;">
+                            <label id="example-radio-group-label">Program</label>
+                            <br>
+                            <mat-radio-group aria-labelledby="example-radio-group-label"
+                             class="example-radio-group" [(ngModel)]="Program">
+                                <!-- favoriteSeason -->
+                                <mat-radio-button class="example-radio-button"  *ngFor="let program of programs"
+                                    [value]="program">
+                                    {{program}}
+                                    <br>
+                                </mat-radio-button>
+                            </mat-radio-group>
+                          
+                            <!-- <mat-form-field class="example-chip-list mt-2"> -->
+                                <div class="mt-4">
+                                    <mat-label>Field</mat-label>
+                                    <mat-chip-list #chipList aria-label="Fruit selection">
+                                      <mat-chip
+                                        *ngFor="let field of fields"
+                                        [selectable]="true"
+                                        [removable]="removable"
+                                        (removed)="remove(field)">
+                                        {{field}}
+                                        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                      </mat-chip>
+                                      <input 
+                                      style="border:1px solid rgb(235, 231, 231);padding:10px"
+                                      class="mt-3"
+                                        placeholder="Choose One Field"
+                                        [formControl]="fieldCtrl"
+                                        [matAutocomplete]="auto"
+                                        [matChipInputFor]="chipList"
+                                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                        (matChipInputTokenEnd)="add($event)">
+                                    </mat-chip-list>
+                                    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                      <mat-option *ngFor="let field of container" [value]="field.type">
+                                        {{field.type}}
+                                      </mat-option>
+                                    </mat-autocomplete>
+                                </div>
+                                <label for="" class="mt-4">City</label>
+                                <select name="city" [(ngModel)]="city2" style="border:1px solid rgb(218, 214, 214) !important;width: 99% !important;padding: 7px;margin: 3% 0;">
+                                        <option value="">Choose City</option>
+                                        <option *ngFor="let city of cities" [value]="city">{{city}}</option>
+                                    </select>
+                                    <br>
+                                       <!-- end field -->
+                                       <!-- <div class="mt-4">
+                                        <mat-label style="margin:5% 0 !important;">School</mat-label>
+                                        <mat-chip-list #chipList2 aria-label="selection">
+                                          <mat-chip
+                                            *ngFor="let school of Schools"
+                                            [selectable]="true"
+                                            [removable]="removable"
+                                            (removed)="removeSchool(school)">
+                                            {{school}}
+                                            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                          </mat-chip>
+                                          <input
+                                          style="border:1px solid rgb(235, 231, 231);padding:10px"
+                                          class="mt-3"
+                                            placeholder="Choose One school Or More"
+                                            [formControl]="schoolCtrl"
+                                            [matAutocomplete]="auto2"
+                                            [matChipInputFor]="chipList2"
+                                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                            (matChipInputTokenEnd)="addSchool($event)">
+                                        </mat-chip-list>
+                                        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedSchool($event)">
+                                          <mat-option *ngFor="let school of allSchools" [value]="school">
+                                            {{school}}
+                                          </mat-option>
+                                        </mat-autocomplete>
+                                    </div> -->
+                                      <!-- </mat-form-field> -->
+                                               <!-- end school -->
+                                  <label id="example-radio-group-label" class="mt-4">Language</label>
+                                  <br>
+                                  <mat-radio-group aria-labelledby="example-radio-group-label"
+                                   class="example-radio-group" [(ngModel)]="language2">
+                                      <mat-radio-button class="example-radio-button" *ngFor="let program of language"
+                                          [value]="program">
+                                          {{program}}
+                                          <br>
+                                      </mat-radio-button>
+                                  </mat-radio-group>
+                           
+                                  <label id="example-radio-group-label" class="mt-3">Sort</label>
+                                  <br>
+                                  <mat-radio-group aria-labelledby="example-radio-group-label" 
+                                  class="example-radio-group" [(ngModel)]="sort2">
+                                      <!-- favoriteSeason -->
+                                      <mat-radio-button class="example-radio-button" *ngFor="let program of sort"
+                                          [value]="program">
+                                          {{program}}
+                                          <br>
+                                      </mat-radio-button>
+                                  </mat-radio-group>
+<button class="w-50" style="padding:3px;margin: 8% 0%" (click)="filter2()">Filter</button>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-6">
+                        <div class="content">
+                            <ng-container *ngIf="filterSchools.length != 0">
+                            <div *ngFor="let item of filterSchools"
+                                style="border-bottom:1px solid rgb(168, 167, 167);padding:20px">
+                                <div class="d-flex">
+                                    <div style="width:10%">
+                                        <img src="assets/images/{{item.school}}.png" class="w-100">
+                                    </div>
+                                    <div style="width:85%;margin:0 5%">
+                                        <h5 style=" font-weight: bold">{{item.Name}}</h5>
+                                        <p>{{item.type}}</p>
+                                        <span>Fee {{item.fee}} $ Per Year</span>
+                                        <span style="margin:0 5%">{{item.city}}</span>
+                                        <button class="btn" style="padding:4px;margin-left:8%;width:23%">More Info</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <ng-container *ngIf="filterSchools.length == 0 && f == true">
+                                <div *ngFor="let item of container"
+                                    style="border-bottom:1px solid rgb(168, 167, 167);padding:20px">
+                                    <div class="d-flex">
+                                        <div style="width:10%">
+                                            <img src="assets/images/{{item.school}}.png" class="w-100">
+                                        </div>
+                                        <div style="width:85%;margin:0 5%">
+                                            <h5 style=" font-weight: bold">{{item.Name}}</h5>
+                                            <p>{{item.type}}</p>
+                                            <span>Fee {{item.fee}} $ Per Year</span>
+                                            <span style="margin:0 5%">{{item.city}}</span>
+                                            <button class="btn" style="padding:4px;margin-left:8%;width:23%">More Info</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="filterSchools.length == 0 && f == false">
+                                <div class="p-5">
+                                  <p style="font-size:20px">Not Found</p>
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+.header{
+    background-image: url("../../../assets/images/2.png");
+    background-repeat: no-repeat;
+    .header-content,.content{
+        background: white;
+        margin-left: 21%;
+        width: 100%;
+        box-shadow: -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
+        -moz-box-shadow:  -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
+        -webkit-box-shadow: -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
+        -o-box-shadow: -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
+        -ms-box-shadow:  -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
+    }
+    input,select{
+       
+    padding: 18px;
+    border: none;
+    outline: none;
+    background: white;
+    width: 43%;
+    color: rgb(158, 157, 157);
+   
+    }
+    input{
+        border-right: 1px solid gray
+    }
+    ::placeholder{
+        color: rgb(158, 157, 157);
+    }
+    button{
+        background-color: rgb(97, 97, 243);
+        border: none;
+        outline: none;
+        color: white;
+        border-radius: 2px;
+        padding: 18px;
+        width: 14%;
+    }
+    span{
+        color:rgb(97, 97, 243);
+    }
+    .example-radio-group {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0;
+        color: gray
+      }
+      
+      .example-radio-button {
+        margin: 5px;
+      }
+    
+}
+.example-chip-list {
+    width: 100%;
+  }
+  p{color: gray}
+  mat-label,label,h5{color:rgb(73, 72, 72)}
+
+  @media (max-width: 767px ){/* mobile & tablet*/
+    .header-content,.content{
+    margin-left: 0% !important;
+    }
+    .content{
+      margin-top: 11% !important;
+
+    }
+    .header input{border: none;border-bottom: 1px solid rgb(194, 192, 192)}
+    .header input,.header select,.header-btn{
+     width:100% !important
+    }
+  .btn{
+    margin:5% 0;
+    width: 46% !important;
+  }
+   
+}
+@media (min-width: 768px) and (max-width:991px){ /* small screen */
+    .header-content,.content{
+        margin-left: 0% !important;
+        
+        } 
+        .btn{
+            width: 24% !important;
+          }
+      
+      
+}
+@media (min-width: 992px) and (max-width:1199px) { /* medium screen */
+    .btn{
+        width: 24% !important;
+      }
+      
+}
