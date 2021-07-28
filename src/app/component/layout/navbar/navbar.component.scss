@@ -26,7 +26,7 @@
     z-index:5555;
     border-bottom: 1px dotted gray;
 }
-mat-icon{display: none;color:rgb(2, 40, 90);    
+.mobile-tab{display: none;color:rgb(2, 40, 90);    
     margin: 0 49%;
     font-size: 30px;cursor: pointer;}
 button{
@@ -41,7 +41,7 @@ button{
 
 @media (max-width: 767px ){/* mobile & tablet*/
     ul{display: none}
-    mat-icon{display: block}
+    .mobile-tab{display: block}
     .logo{width:8% !important}
    
 }
