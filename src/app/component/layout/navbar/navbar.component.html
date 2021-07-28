@@ -1,9 +1,9 @@
-<div class="navbar sticky-top" id="navbar">
+<div class="navbar" id="navbar">
     <div class="container">
         <div class="d-flex w-100 mt-3 mb-3">
-            <div class="ml-3" style="width:3%">
+            <div class="logo ml-3" style="width:5%">
                 <a href="" routerLink="/home">
-                <div class="logo">
+                <div>
                     <img src="assets/images/1.png" alt="">
                 </div>
             </a>
@@ -11,24 +11,14 @@
             <div class="" style="width:97%">
                 <ul class="">
                     <li><a href="" routerLink="/home">Home</a></li>
-                    <!-- <li><a href="">Programs</a></li> -->
                     <li><a href="" routerLink="/school">Schools</a></li>
-                    <!-- <li><a href="">About</a></li>
-                    <li><a href=""><button>Login</button></a></li> -->
-                    
-                    
-                   
-                    
                      <div class="clearFix"></div>
-
                 </ul>
                 <mat-icon [matMenuTriggerFor]="menu">menu</mat-icon>
-                <mat-menu #menu="matMenu">
-                        <a mat-menu-item href="">Home</a>                    
-                        <a mat-menu-item href="">Programs</a>
-                        <a mat-menu-item href="">Schools</a>
-                        <a mat-menu-item href="">About</a>
-                        <a mat-menu-item href=""><button>Login</button></a>
+                <mat-menu class="mt-3" #menu="matMenu">
+                        <a style="text-decoration: none;" mat-menu-item href="" routerLink="/home">Home</a>                    
+                        <a style="text-decoration: none;" mat-menu-item href="" routerLink="/school">Schools</a>
+                      
                     </mat-menu>
             </div>
 

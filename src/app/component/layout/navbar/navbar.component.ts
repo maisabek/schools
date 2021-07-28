@@ -11,6 +11,16 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  @HostListener('window:scroll',[])
+  onWindowScroll(){
+    if(document.body.scrollTop > 0 || document.documentElement.scrollTop > 0){
+      document.getElementById('navbar').classList.add('navbar-scroll')
+
+    }else{
+      document.getElementById('navbar').classList.remove('navbar-scroll')
+
+    }
+  }
   
  
 

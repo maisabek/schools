@@ -5,14 +5,14 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .slider-arrow{
     position: absolute;
-    width: 100px;
+    width: 57px;
     height: 100px;
-    top:40%;
+    top:34%;
     transform: translateY(-50%);
     z-index: 9999;
   }
-  .slider-arrow.left{left: 0;}
-  .slider-arrow.right{right: 0;}
+  .slider-arrow.left{    left: 27px;}
+  .slider-arrow.right{right: 27px;}
   .owl-theme .owl-nav [class*=owl-]{
       background-color:transparent;
   }

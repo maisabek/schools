@@ -1,61 +1,127 @@
 <div class="home-slider">
     <div class="scroll-down">
-      <a href="#addItem"></a>
+      <a href="#about"></a>
       <div class="mousey">
         <div class="scroller"></div>
       </div>
     </div>
-  
+    <div class="container">
       <div class="slider">
-        <ngx-typed-js [strings]="['School is the place where we learn to read and write..', 'It is the most crucial place for a student..', ' it helps us to learn new things..']" 
+        <ngx-typed-js [strings]="['School is the place where we learn', 'It is the most place for a student', 'It helps us to learn new things..']" 
         [shuffle]="true" [loop]="true" [typeSpeed]="100">
-           <span class="typing"></span>
+           <p class="typing"></p>
         </ngx-typed-js>
     </div>
-  <owl-carousel-o [options]="customOptions" class="h-100">
-    
-    <ng-template carouselSlide class="h-100">
-     
-        <div class="carousel-img1" class="h-100">
-          <img src="assets/images/01.png" class="h-100">
+  </div>
+  <owl-carousel-o [options]="customOptions" class="w-100 h-100" style="position: absolute;">
+    <ng-template carouselSlide class="w-100 h-100">
+        <div class="carousel-img1" class="w-100 h-100">
+          <div class="overlay"></div>
+          <img src="assets/images/01.png" class="w-100 h-100">
         </div>
            
     </ng-template>  
-    <ng-template carouselSlide class="h-100">  
+    <ng-template carouselSlide class="w-100 h-100">  
      
-        <div class="carousel-img2" class="h-100">
-            <img src="assets/images/05.jpg" class="h-100">
+        <div class="carousel-img2 w-100 h-100">
+          <div class="overlay"></div>
+            <img src="assets/images/05.jpg" class="w-100 h-100">
           </div>
        
         </ng-template>  
-    <ng-template carouselSlide>
+    <ng-template carouselSlide class="w-100 h-100">
         
-        <div class="carousel-img3">
-            <img src="assets/images/06.jpg">
+        <div class="carousel-img3 w-100 h-100">
+          <div class="overlay"></div>
+            <img src="assets/images/06.jpg" class="w-100 h-100">
           </div>        
          
     </ng-template>  
   </owl-carousel-o>
-  
+</div>
+<!-- end carousel -->
+
+<div class="about mt-5 mb-5" id="about">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInLeft col-md-7 mt-4" data-wow-duration="3s">
+        <div class="p-3" style="border:2px dotted rgb(6, 78, 172)">
+          <div class="img-content"  style="position:relative">
+            <div class="overlay"></div>
+            <img src="assets/images/01.jpeg" class="w-100" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-top:10%;margin-left: 8%;">
+          <div class="content w-100">
+               <h5>Hello</h5>
+               <p>School is the place where we learn to read and write It helps us to learn new things..</p>
+          </div>
+      </div>
+    
+    </div>
+  </div>
+</div>
+<!-- end about -->
+
+
+<div class="service mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-5 col-lg-5 mt-5">
+          <div class="content">
+            <h5 style="font-family: cursive;color: white;margin: 3% 0;">School</h5>
+            <p>The most place for a student It helps us to learn School is the place where we learn..
+            </p>
+            <!-- <button>Read More</button> -->
+          </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-5 mt-5">
+        <div class="content2 w-100 h-100 mt-4">
+          <img src="assets/images/32.png" class="w-100 h-100" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- end carousel -->
+<div class="gallary mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="wow fadeInLeft col-md-4 mt-5 " data-wow-duration="3s">
+        <div class="w-100">
+          <img src="assets/images/x.png" class="w-100 h-100" alt="">
+        </div>
+      </div>
+      <div class="col-md-7 mt-5">
+        <div class="content w-100 mt-5 d-flex">
+          <i class="fa fa-quote-right mt-5" aria-hidden="true"></i>
+          <p class="mt-5" style="color: rgb(2, 40, 90);font-family: system-ui;font-size: 25px;margin: 0% 4%;">Our prescolaire school is a fantastic first experience of school in a best way.</p>
+        </div>
+      </div>
+      
+     
+    </div>
+  </div>
+</div>
+
+
 <!-- start addItem -->
 <div class="addItem mt-5" id="addItem">
 <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h5>Fill Your Data</h5>
+  <div class="row no-gutters">
+    <div class="col-md-12 mt-5">
+      <h5 class="wow bounce" data-wow-duration="4s">Fill Your Data</h5>
     </div>
-    <div class="card col-md-8">
+    <div class="card  col-md-12 col-lg-6 mt-5">
       <form [formGroup]="addItemForm" class="m-5">
         <mat-form-field appearance="full">
-          <mat-label>Student Name</mat-label>
+          <mat-label>Enter Student Name</mat-label>
           <input type="text" matInput formControlName="title">
         </mat-form-field>
         <br>
         <mat-form-field appearance="full">
-          <mat-label>Class Room Number</mat-label>
+          <mat-label>Enter Class Room Number</mat-label>
           <input type="number" matInput formControlName="description">
         </mat-form-field>
         <br>
@@ -106,22 +172,28 @@
       
         <ng-template #addTemplate>
         <mat-dialog-content>
-          <h5>Are You Sure You Want To sand your data</h5>
-          <button class="btn m-3" (click)="addItems();pushTitle();pushDescription();pushPage();openSnackBar('data added successfully','ok');closeDialog();addItemForm.reset();total= total+1;pushSubject()">Yes</button>
-          <button class="btn" (click)="closeDialog()">No</button>
+          <h5>Are You Sure You Want To sand your data ?</h5>
+          <button class="template-btn m-3" (click)="addItems();pushTitle();pushDescription();pushPage();openSnackBar('data added successfully','');closeDialog();addItemForm.reset();total= total+1;pushSubject()">Yes</button>
+          <button class="template-btn" (click)="closeDialog()">No</button>
          
         </mat-dialog-content>
       </ng-template>
     </form>
     </div>
+    <div class="col-md-12 col-lg-6 mt-5">
+      <div class="w-100 h-auto" style="position: relative;">
+        <div class="overlay"></div>
+        <img src="assets/images/gallery.jpg" class="w-100 h-auto" alt="">
+      </div>
+    </div>
   </div>
 </div>
 </div>
-
 <hr>
 <!-- end addItem -->
-<!-- start display Items -->
 
+
+<!-- start display Items -->
 <div class="container">
   
 
@@ -133,23 +205,22 @@
             <div class="card p-5 mt-5">
               <div class="row">
                 <div class="col-md-4">
-                 <img [src]="url[currentPage]" class="main-image">
+                 <img [src]="url[currentPage]" class="w-100 main-image">
                 </div>
               </div>
-              <p>Student Name  : {{ServiceService.titles[currentPage]}}</p>
+              <p class="mt-5">Student Name  : {{ServiceService.titles[currentPage]}}</p>
               <p>Class Room Number : {{ServiceService.descriptions[currentPage]}}</p>
               <ng-container *ngIf="images.length != 0">
                <p>Subject Info :</p> 
             <ng-container > 
               <div class="row">
-                <div class="col-md-12" >
+                <div class="col-md-12 mt-5" >
                  <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">#</th>
                       <th scope="col">subject Name</th>
                       <th scope="col">Comment</th>
-                      <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -159,9 +230,7 @@
                       <th scope="row">{{i+1}}</th>
                       <td>{{img.subjectName}}</td>
                       <td>{{img.subjectCount}}</td>
-                      <td> <button class="btn mb-4" type="button"
-                         (click)="deleteImage(i+1)">Delete</button>                        
-                      </td>
+                      
                       </tr>
                     <!-- </ng-container> -->
                       </tbody>
@@ -179,3 +248,4 @@
           </div></div>
   <!-- </div> -->
 </div>
+<!-- end display Items -->

@@ -3,7 +3,6 @@
     background-repeat: no-repeat;
     .header-content,.content{
         background: white;
-        margin-left: 21%;
         width: 100%;
         box-shadow: -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
         -moz-box-shadow:  -1px 4px 8px 0px rgba(105, 105, 105, 0.75);
@@ -28,22 +27,25 @@
         color: rgb(158, 157, 157);
     }
     button{
-        background-color: rgb(97, 97, 243);
+        background-color: rgb(2, 40, 90);
         border: none;
         outline: none;
         color: white;
         border-radius: 2px;
-        padding: 18px;
+        padding: 19px;
         width: 14%;
+        font-family: system-ui;
     }
     span{
-        color:rgb(97, 97, 243);
+        color:rgb(2, 40, 90);
     }
     .example-radio-group {
         display: flex;
         flex-direction: column;
         margin: 15px 0;
-        color: gray
+        color: gray;
+        font-family: system-ui;
+
       }
       
       .example-radio-button {
@@ -54,8 +56,12 @@
 .example-chip-list {
     width: 100%;
   }
-  p{color: gray}
-  mat-label,label,h5{color:rgb(73, 72, 72)}
+  p{color: gray;                
+    font-family: system-ui;
+  }
+  mat-label,label,h5{color:rgb(2, 40, 90);               
+    font-family: system-ui;
+  }
 
   @media (max-width: 767px ){/* mobile & tablet*/
     .header-content,.content{

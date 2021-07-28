@@ -4,6 +4,8 @@ import {FormBuilder, FormGroup,FormArray} from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import {ServiceService} from '../../services/service.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgwWowService } from 'ngx-wow';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,8 +13,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class HomeComponent implements OnInit {
   addItemForm:FormGroup
-  constructor(private fb:FormBuilder,private dialog:MatDialog,
+  constructor(private fb:FormBuilder,private dialog:MatDialog,private wowService: NgwWowService,
     public ServiceService:ServiceService,private SnackBar:MatSnackBar) {
+      this.wowService.init();
     this.addItemForm=this.initFormControl('init')
     // this.ServiceService.pushItem(this.ServiceService.items[0])
     //  console.log("itemContainer",this.itemContainer)

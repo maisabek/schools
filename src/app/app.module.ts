@@ -20,6 +20,8 @@ import {NavbarComponent} from '../app/component/layout/navbar/navbar.component'
 import { MaterialModule } from './shared/material/material.module';
 import { SchoolsComponent } from './component/schools/schools.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgwWowModule } from 'ngx-wow';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     MatDialogModule,
+    NgwWowModule,
     MatSnackBarModule,
     MatPaginatorModule,
     PaginationModule.forRoot(),
